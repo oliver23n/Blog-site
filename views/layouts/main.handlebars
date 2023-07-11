@@ -28,15 +28,22 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
+                        {{#if loggedIn}}
+                        <a class="button is-light">
+                            Log out
+                        </a>
+                        {{else}}
                         <a class="button is-primary">
                             <strong>Log in</strong>
                         </a>
+                        {{/if}}
 
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+    <h1 class="tech-blog">Tech Blog</h1>
 
     {{{body}}}
 
