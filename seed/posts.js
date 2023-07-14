@@ -5,11 +5,13 @@ const postData = [
 {
     title:" First post",
     text : "this is first post",
+    user_id: 1
 
 },
 {
     title: " Second post",
     text: "this is second post",
+    user_id: 2
 }
 
 ];

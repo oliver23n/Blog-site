@@ -3,15 +3,16 @@
 
             <header class="card-header">
                 <p class="card-header-title">
-                    {{title}}
+                    {{post.title}}
                 </p>
                 <div class="card-content">
                     <div class="content">
-                        {{text}}
+                        {{post.text}}
                     </div>
                 </div>
                 <footer class="card-footer">
-                    {{created_at}}
+                   <p> {{post.created_at}} </p>
+                   <p> {{post.user.username}}</p>
                 </footer>
     </div>
     

@@ -1,18 +1,25 @@
-<section class="column">
-    <div class="card">
-    <a href ="/post/{{id}}">
-    <header class="card-header">
-        <p class="card-header-title">
+
+<div class="card ">
+    <a href="/post/{{id}}"><div class="card-content">
+        <p class="card-header title">
             {{title}}
         </p>
-        <div class="card-content">
-            <div class="content">
-               {{text}}
-            </div>
+        <div class="content">
+            {{text}}
         </div>
-        <footer class="card-footer">
-      {{created_at}}
-        </footer>
     </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            <span>
+            {{user.username}}
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+            {{created_at}}
+            </span>
+        </p>
+    </footer>
     </a>
-</section>
+</div>
+<br>

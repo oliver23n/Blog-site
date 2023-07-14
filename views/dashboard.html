@@ -15,11 +15,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="/">
+                <a class="navbar-item">
                     HOME
                 </a>
 
-                <a class="navbar-item" href="/dashboard">
+                <a class="navbar-item">
                     DASHBOARD
                 </a>
 
@@ -28,16 +28,14 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {{#if loggedIn }}
+
                         <a id="logout" class="button is-light">
                             Log out
                         </a>
-                        {{else}}
 
                         <a id="login" href='/login' class="button is-primary">
                             <strong>Log in</strong>
                         </a>
-                        {{/if}}
 
 
                     </div>
@@ -48,8 +46,19 @@
     <div class="columns is-centered">
         <h1 class="title is-1 is-centered">Tech Blog</h1>
     </div>
-{{{body}}}
+<div class="box column">
+        <h2 class="title is-3 is-full">my dashboard</h2>
+</div>
 
+<div class="box">
+<div class="container">
+    <a href="">
+    <div class="notification is-primary level">
+       <p>TITLE OF POST</p> <p class="level-right" >DATE</p>
+    </div></a>
+</div>
+</div>
+<button class="button is-medium">ADD POST</button>
 </body>
 
 </html>

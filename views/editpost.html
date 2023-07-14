@@ -15,11 +15,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="/">
+                <a class="navbar-item">
                     HOME
                 </a>
 
-                <a class="navbar-item" href="/dashboard">
+                <a class="navbar-item">
                     DASHBOARD
                 </a>
 
@@ -28,16 +28,14 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {{#if loggedIn }}
+
                         <a id="logout" class="button is-light">
                             Log out
                         </a>
-                        {{else}}
 
                         <a id="login" href='/login' class="button is-primary">
                             <strong>Log in</strong>
                         </a>
-                        {{/if}}
 
 
                     </div>
@@ -48,8 +46,46 @@
     <div class="columns is-centered">
         <h1 class="title is-1 is-centered">Tech Blog</h1>
     </div>
-{{{body}}}
 
+
+    
+    <div class="box column">
+        <h2 class="title is-3 is-full">my dashboard</h2>
+    </div>
+
+    <div class="box">
+        <h4 class="title is-4">Edit post</h4>
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <textarea class="textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+                <textarea class="textarea"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="field is-grouped">
+        <p class="control">
+            <button class="button is-link">
+                Save changes
+            </button>
+        </p>
+        <p class="control">
+            <button class="button">
+                Cancel
+            </button>
+        </p>
+        <p class="control">
+            <button class="button is-danger">
+                Delete post
+            </button>
+        </p>
+    </div>
 </body>
 
 </html>
