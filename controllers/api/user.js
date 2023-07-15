@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const dbUserData = await User.create({
             username: req.body.username,
@@ -10,12 +10,12 @@ router.post('/', async (req, res) => {
             password: req.body.password,
         });
 
-        // TODO: Set up sessions with the 'loggedIn' variable
-        req.session.save(() => {
-            // TODO: Set the 'loggedIn' session variable to 'true'
-            req.session.loggedIn = true;
             res.status(200).json(dbUserData);
-        });
+        console.log(dbUserData);
+        // req.session.save(() => {
+         
+        //     req.session.loggedIn = true;
+        // });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -46,11 +46,11 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password. Please try again!' });
             return;
         }
-
+        console.log(dbUserData);
         req.session.save(() => {
          
-            req.session.loggedIn = true;
-
+            // req.session.loggedIn = true;
+            //get the username
             res
                 .status(200)
                 .json({ user: dbUserData, message: 'You are now logged in!' });
@@ -64,13 +64,13 @@ router.post('/login', async (req, res) => {
 // Logout
 router.post('/logout', (req, res) => {
     // When the user logs out, the session is destroyed
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-    } else {
-        res.status(404).end();
-    }
+    // if (req.session.loggedIn) {
+    //     req.session.destroy(() => {
+    //         res.status(204).end();
+    //     });
+    // } else {
+    //     res.status(404).end();
+    // }
 });
 
 module.exports = router;
