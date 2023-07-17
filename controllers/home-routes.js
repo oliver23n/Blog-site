@@ -53,14 +53,5 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-//dashboard route
-//add middlware for authentication
-router.get('/dashboard', async (req,res)=>{
-    try{
-        // get all post that match the  username logged in
-        res.render('dashboard')
-    }catch(err){
-        console.error(err);
-    }
-})
+
 module.exports = router;

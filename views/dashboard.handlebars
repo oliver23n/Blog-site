@@ -4,12 +4,11 @@
 
 <div class="box">
     <div class="container">
-        <a href="">
-            <div class="notification is-primary level">
-                <p>TITLE OF POST</p>
-                <p class="level-right">DATE</p>
-            </div>
-        </a>
+       {{#each userposts}}
+       {{> userpost-details}}
+       {{/each}}
     </div>
 </div>
-<button class="button is-medium">ADD POST</button>
+<a href="/dashboard/new">
+<button  class="button is-medium">ADD POST</button>
+</a>
