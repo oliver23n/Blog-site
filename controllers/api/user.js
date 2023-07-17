@@ -10,12 +10,15 @@ router.post('/signup', async (req, res) => {
             password: req.body.password,
         });
 
+           
+        req.session.save(() => {
+            req.session.userID = dbUserData.id;
+            req.session.loggedIn = true;
+            req.session.username = dbUserData.username;
+            console.log(req.session.loggedIn, req.session.username, req.session.userID)
             res.status(200).json(dbUserData);
-        console.log(dbUserData);
-        // req.session.save(() => {
-         
-        //     req.session.loggedIn = true;
-        // });
+    
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -30,6 +33,7 @@ router.post('/login', async (req, res) => {
                 email: req.body.email,
             },
         });
+        console.log(dbUserData);
 
         if (!dbUserData) {
             res
@@ -38,7 +42,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await dbUserData.checkPassword(req.body.password);
+        const validPassword = await dbUserData.checkPass(req.body.password);
 
         if (!validPassword) {
             res
@@ -46,14 +50,17 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password. Please try again!' });
             return;
         }
-        console.log(dbUserData);
+        
         req.session.save(() => {
          
-            // req.session.loggedIn = true;
-            //get the username
+            req.session.loggedIn = true;
+            //get the username and id
+            req.session.username = dbUserData.username;
+            req.session.userID = dbUserData.id;
+            console.log(req.session.loggedIn, req.session.username, req.session.userID)
             res
-                .status(200)
-                .json({ user: dbUserData, message: 'You are now logged in!' });
+            .status(200)
+            .json({ user: dbUserData, message: 'You are now logged in!' });
         });
     } catch (err) {
         console.log(err);
@@ -63,14 +70,13 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-    // When the user logs out, the session is destroyed
-    // if (req.session.loggedIn) {
-    //     req.session.destroy(() => {
-    //         res.status(204).end();
-    //     });
-    // } else {
-    //     res.status(404).end();
-    // }
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(200).end();
+        });
+    } else {
+        res.status(404).end();
+    }
 });
 
 module.exports = router;

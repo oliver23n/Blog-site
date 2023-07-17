@@ -28,16 +28,16 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {{!-- {{#if loggedIn }} --}}
-                        <a id="logout" class="button is-light">
+                        {{#if loggedIn }}
+                        <a id="logout"  href="/" class="button is-light">
                             Log out
                         </a>
-                        {{!-- {{else}} --}}
+                        {{else}}
 
                         <a id="login" href='/login' class="button is-primary">
                             <strong>Log in</strong>
                         </a>
-                        {{!-- {{/if}} --}}
+                        {{/if}}
 
 
                     </div>
@@ -49,8 +49,9 @@
         <h1 class="title is-1 is-centered">Tech Blog</h1>
     </div>
 {{{body}}}
-
+{{#if loggedIn}}
 <script src="./js/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
