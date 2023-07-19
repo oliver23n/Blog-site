@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
-const { removeAttribute } = require('../models/User');
+const authorization = require('../utils/auth')
+
 
 //check if its logged in middleware
-router.get('/', async(req,res) => {
+router.get('/',authorization, async(req,res) => {
     try{
         const postData = await Post.findAll({
           

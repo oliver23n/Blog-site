@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
+const authorization = require('../utils/auth');
 
 // render all posts on homepage 
 router.get('/', async (req,res) => {
@@ -20,23 +21,24 @@ router.get('/', async (req,res) => {
     }
 
 });
+//need authorization
+router.get('/post/:id',authorization, async (req,res) => {
 
-router.get('/post/:id', async (req,res) => {
-    // if(!req.session.loggedIn){
-    //     redirect('/');
-    //     return;
-    // }
     try{
         const postData = await Post.findByPk(req.params.id, {
             include: [ 
                 {
-                    model : User,
+                    model: User,
+                },
+                {
+                    model: Comment
                 }
             ]
         })
         const post = postData.get({plain: true});
+        console.log(post);
         res.render('post',{
-            post, loggedIn: true
+            post, loggedIn: req.session.loggedIn
         })
     }catch(err){
         console.error(err);

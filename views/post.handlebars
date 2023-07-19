@@ -1,19 +1,43 @@
-<section class="container">
-    <div class="card">
-
-            <header class="card-header">
-                <p class="card-header-title">
-                    {{post.title}}
-                </p>
-                <div class="card-content">
-                    <div class="content">
-                        {{post.text}}
-                    </div>
-                </div>
-                <footer class="card-footer">
-                   <p> {{post.created_at}} </p>
-                   <p> {{post.user.username}}</p>
-                </footer>
+<div class="card ">
+    <div class="card-content">
+        <p class="card-header title">
+            {{post.title}}
+        </p>
+        <div class="content">
+          {{post.text}}
+        </div>
     </div>
-    
-</section>
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            <span>
+              {{ post.user.username}}
+            </span>
+        </p>
+        <p class="card-footer-item">
+            <span>
+               {{ post.created_at}}
+            </span>
+        </p>
+    </footer>
+</div>
+
+<div class="block">
+{{#each post.comments}}
+{{> comments-partial}}
+{{/each}}
+</div>
+
+<div class="card-content">
+
+<form class="comment-form">
+
+    <textarea class="textarea" placeholder="Add Comment"></textarea>
+
+
+    <div class="buttons">
+        <button type="submit" class="button is-success">Submit</button>
+        
+    </div>
+</div>
+</form>
+<script src="/js/createcomment.js"></script>

@@ -21,6 +21,10 @@ Comment.init(
                 model:'Post',
                 key:'id'
             }
+        },
+        posted_by:{
+            type: DataTypes.STRING,
+            allowNull:false
         }
     },
     {
