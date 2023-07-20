@@ -16,11 +16,11 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">
-                    HOME
+                    <strong>HOME</strong>
                 </a>
 
                 <a class="navbar-item" href="/dashboard">
-                    DASHBOARD
+                    <strong>DASHBOARD</strong>
                 </a>
 
             </div>
@@ -29,7 +29,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         {{#if loggedIn }}
-                        <a id="logout"  href="/" class="button is-light">
+                        <a id="logout" href="/" class="button is-light">
                             Log out
                         </a>
                         {{else}}
@@ -45,13 +45,14 @@
             </div>
         </div>
     </nav>
+    <br>
     <div class="columns is-centered">
         <h1 class="title is-1 is-centered">Tech Blog</h1>
     </div>
-{{{body}}}
-{{#if loggedIn}}
-<script src="/js/logout.js"></script>
-{{/if}}
+    {{{body}}}
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

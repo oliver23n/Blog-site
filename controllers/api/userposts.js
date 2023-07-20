@@ -3,41 +3,41 @@ const { Post } = require('../../models');
 
 //  api/dashboard/
 //create post post route
-router.post('/new',async (req,res)=>{
-    try{
+router.post('/new', async (req, res) => {
+    try {
         const userPost = await Post.create({
             title: req.body.title,
             text: req.body.content,
             user_id: req.session.userID
         });
-       
+
         res.status(200).json(userPost);
-    }catch(err){
-        console.error(err);
+    } catch (err) {
+        res.status(500).json(err);
     }
-} );
+});
 
 //edit post route
 
-router.put('/post/:id',async (req,res) => {
-    try{
-        const newPostData = await Post.update(req.body,{
-            where:{
+router.put('/post/:id', async (req, res) => {
+    try {
+        const newPostData = await Post.update(req.body, {
+            where: {
                 id: req.params.id
             }
         });
-        
+
         res.status(200).json(newPostData);
-    }catch(err){
-        console.error(err);
+    } catch (err) {
+        res.status(500).json(err);
     }
 })
 
 //delete post route
-router.delete('/post/:id',async (req,res)=>{
-    try{
+router.delete('/post/:id', async (req, res) => {
+    try {
         const postData = await Post.destroy({
-            where:{
+            where: {
                 id: req.params.id
             }
         });
@@ -46,8 +46,8 @@ router.delete('/post/:id',async (req,res)=>{
         } else {
             res.status(200).json(postData);
         }
-    }catch(err){
-        console.error(err);
+    } catch (err) {
+        res.status(500).json(err);
     }
 })
 

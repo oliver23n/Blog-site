@@ -10,17 +10,16 @@ router.post('/signup', async (req, res) => {
             password: req.body.password,
         });
 
-           
+
         req.session.save(() => {
             req.session.userID = dbUserData.id;
             req.session.loggedIn = true;
             req.session.username = dbUserData.username;
             console.log(req.session.loggedIn, req.session.username, req.session.userID)
             res.status(200).json(dbUserData);
-    
+
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -50,20 +49,19 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password. Please try again!' });
             return;
         }
-        
+
         req.session.save(() => {
-         
+
             req.session.loggedIn = true;
             //get the username and id
             req.session.username = dbUserData.username;
             req.session.userID = dbUserData.id;
             console.log(req.session.loggedIn, req.session.username, req.session.userID)
             res
-            .status(200)
-            .json({ user: dbUserData, message: 'You are now logged in!' });
+                .status(200)
+                .json({ user: dbUserData, message: 'You are now logged in!' });
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });

@@ -1,9 +1,8 @@
-<article class="message is-small">
-    <div class="message-header">
-        <p>BY{{posted_by}}</p>
+<article class="message is-small column">
+    <div class="message-header is-primary level">
+        <p>Posted By: {{posted_by}}</p>
         <br>
-        <p>{{createdAt}}</p>
-        <button class="delete is-small" aria-label="delete"></button>
+        <p class="level-right">{{format_time createdAt}}</p>
     </div>
     <div class="message-body">
         {{comment_text}}
