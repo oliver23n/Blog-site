@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
                 email: req.body.email,
             },
         });
-        console.log(dbUserData);
+
 
         if (!dbUserData) {
             res
@@ -56,7 +56,6 @@ router.post('/login', async (req, res) => {
             //get the username and id
             req.session.username = dbUserData.username;
             req.session.userID = dbUserData.id;
-            console.log(req.session.loggedIn, req.session.username, req.session.userID)
             res
                 .status(200)
                 .json({ user: dbUserData, message: 'You are now logged in!' });
